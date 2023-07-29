@@ -7,8 +7,8 @@ class SlidingSwitch extends StatefulWidget {
   final bool value;
   final String textOff;
   final String textOn;
-  final IconData iconOff;
-  final IconData iconOn;
+  final IconData? iconOff;
+  final IconData? iconOn;
   final double contentSize;
   final Duration animationDuration;
   final Color colorOn;
@@ -19,6 +19,7 @@ class SlidingSwitch extends StatefulWidget {
   final Function onTap;
   final Function onDoubleTap;
   final Function onSwipe;
+  final double radius;
 
   const SlidingSwitch({
     required this.value,
@@ -29,6 +30,7 @@ class SlidingSwitch extends StatefulWidget {
     required this.onTap,
     required this.onDoubleTap,
     required this.onSwipe,
+    required this.radius,
     this.textOff = "Off",
     this.textOn = "On",
     this.iconOff,
@@ -97,7 +99,7 @@ class _SlidingSwitch extends State<SlidingSwitch>
           width: widget.width,
           decoration: BoxDecoration(
               color: widget.background,
-              borderRadius: BorderRadius.circular(50)),
+              borderRadius: BorderRadius.circular(widget.radius)),
           padding: EdgeInsets.all(2),
           child: Stack(children: <Widget>[
             Transform.translate(
@@ -106,7 +108,7 @@ class _SlidingSwitch extends State<SlidingSwitch>
                   height: widget.height,
                   width: widget.width * 0.5 - 4,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(widget.radius)),
                       color: widget.buttonColor,
                       boxShadow: [
                         new BoxShadow(
